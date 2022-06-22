@@ -14,4 +14,4 @@ def exp():
     cur = conn.cursor()
     cur.execute("SELECT * FROM expenses")
     records = cur.fetchall()
-    return render_template("exp.html", records=records)
+    return render_template("exp.html", expenses=records)
