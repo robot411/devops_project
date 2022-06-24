@@ -7,8 +7,8 @@ conn = psycopg2.connect("dbname=postgres user=postgres password=admin123 host=lo
 
 @app.route('/')
 def index():
-    # return render_template("home.html")
-    return "<h>Hello, World!</h>"
+    return render_template("home.html")
+    # return "<h>Hello, World!</h>"
 
 @app.route("/exp")
 def exp():
@@ -17,16 +17,16 @@ def exp():
     records = cur.fetchall()
     return render_template("exp.html", expenses=records)
 
-"""@app.route("/cat")
+@app.route("/cat")
 def cat():
     cur = conn.cursor()
     cur.execute("SELECT * FROM categories")
     records = cur.fetchall()
-    return render_template("cat.html", categories=records)"""
+    return render_template("cat.html", categories=records)
 
-"""@app.route("/pay")
+@app.route("/pay")
 def pay():
     cur = conn.cursor()
     cur.execute("SELECT * FROM payments")
     records = cur.fetchall()
-    return render_template("pay.html", payments=records)"""
+    return render_template("pay.html", payments=records)
