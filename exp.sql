@@ -19,6 +19,8 @@ CREATE TABLE categories (
     name TEXT NOT NULL UNIQUE
 );
 
+
+
 -- ALTER TABLES
 
 ALTER TABLE expenses
@@ -30,6 +32,8 @@ ALTER TABLE expenses
 ADD CONSTRAINT fk_expenses_payments
 FOREIGN KEY (payment_id)
 REFERENCES payments;
+
+
 
 -- INSERT DATA
 
