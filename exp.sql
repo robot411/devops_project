@@ -1,30 +1,35 @@
 -- CREATE TABLES
 
-DROP TABLE IF EXISTS expenses;
-
 CREATE TABLE expenses (
     id SERIAL PRIMARY KEY,
     date DATE NOT NULL,
     name TEXT NOT NULL,
     amount NUMERIC NOT NULL,
-    category_id INT NOT NULL FOREIGN KEY REFERENCES categories(category_id),
-    payment_id INT NOT NULL FOREIGN KEY REFERENCES payments(payment_id)
+    category_id INT NOT NULL,
+    payment_id INT NOT NULL
 );
-
-DROP TABLE IF EXISTS payments;
 
 CREATE TABLE payments (
     id SERIAL PRIMARY KEY,
     name VARCHAR NOT NULL UNIQUE
 );
 
-DROP TABLE IF EXISTS categories;
-
 CREATE TABLE categories (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL UNIQUE
 );
 
+-- ALTER TABLES
+
+ALTER TABLE expenses
+ADD CONSTRAINT fk_expenses_categories
+FOREIGN KEY (category_id)
+REFERENCES categories;
+
+ALTER TABLE expenses
+ADD CONSTRAINT fk_expenses_payments
+FOREIGN KEY (payment_id)
+REFERENCES payments;
 
 -- INSERT DATA
 

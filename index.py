@@ -8,7 +8,6 @@ conn = psycopg2.connect("dbname=postgres user=postgres password=admin123 host=lo
 @app.route('/')
 def index():
     return render_template("home.html")
-    # return "<h>Hello, World!</h>"
 
 @app.route("/exp")
 def exp():
